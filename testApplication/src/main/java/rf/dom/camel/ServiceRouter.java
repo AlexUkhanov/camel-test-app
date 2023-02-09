@@ -46,7 +46,7 @@ public class ServiceRouter extends RouteBuilder {
                                 e -> e.setSum(e.getSum() * multiplier));
                     })
                     .marshal().bindy(BindyType.Csv, ObjectModel.class)
-                    .to("file:"+ outputFilepath +"?fileName=output.csv")
+                    .to("file:"+ outputFilepath +"?fileName=" + outputFilename)
                     .setHeader(Exchange.HTTP_RESPONSE_CODE, constant(HttpStatus.SC_CREATED))
                     .setBody(constant(HTTP_SUCCESS_RETURN_VALUE))
                 .otherwise()
